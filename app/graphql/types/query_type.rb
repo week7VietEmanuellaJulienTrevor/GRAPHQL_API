@@ -50,7 +50,7 @@ module Types
     #conn = PG::Connection.open(dbname: "datawarehouse_development")
     # FactIntervention = conn.exec('SELECT * FROM factinterventions')
     def query4 (id:)
-      PG::Connection.open(dbname: "datawarehouse_development").exec('SELECT * FROM factinterventions').find(id)
+      
     end
   end
 end
