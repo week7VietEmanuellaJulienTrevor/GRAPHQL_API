@@ -10,9 +10,47 @@ module Types
       "Hello World!"
     end
 
-    field :query1, Querry1Type, null:false
-    def query1
-      "This test work"
+    # field :query1,
+    #   Query1Type, 
+    #   null: false,
+    #   description: "test"
+    # end 
+    field :query1, Query1Type, null: false do
+      description "other test"
+      argument :id, ID, required: true
+    end
+    
+    def query1 (id:)
+      Customer.find(id)
+    end
+
+    field :query2, Query2Type, null: false do
+      description "other test"
+      argument :id, ID, required: true
+    end
+    
+    def query2 (id:)
+      Building.select('buildings.id, buildings.address_of_the_building').find(id)
+    end
+
+    field :query3, Query3Type, null: false do
+      description "other test"
+      argument :id, ID, required: true
+    end
+    
+    def query3 (id:)
+      Battery.find(id)
+    end
+
+    field :query4, Query4Type, null: false do
+      description "other test"
+      argument :id, ID, required: true
+    end
+    
+    #conn = PG::Connection.open(dbname: "datawarehouse_development")
+    # FactIntervention = conn.exec('SELECT * FROM factinterventions')
+    def query4 (id:)
+      PG::Connection.open(dbname: "datawarehouse_development").exec('SELECT * FROM factinterventions').find(id)
     end
   end
 end
