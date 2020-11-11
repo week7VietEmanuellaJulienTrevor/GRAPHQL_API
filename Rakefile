@@ -13,8 +13,11 @@ task :minitest => :environment do
     puts number
 
     puts "second db connection"
+    #Test jd db ok!
+    # conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "jd2")
+    # fact = conn.exec('SELECT * FROM fact_elevators')
     conn = PG::Connection.open(dbname: "datawarehouse_development")
-    fact_interventions = conn.exec('SELECT * FROM factinterventions')
-    puts fact_interventions.count
+    fact= conn.exec('SELECT * FROM factinterventions')
+    puts fact.count
 
 end

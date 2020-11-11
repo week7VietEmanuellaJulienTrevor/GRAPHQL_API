@@ -57,8 +57,8 @@ production:
 datawarehouse_connect:
   adapter: postgresql
   encoding: unicode
-  database: datawarehouse_development
+  database: <%= ENV['database2'] %>
   pool: 5
-  host: localhost
-  username: jdupont
-  password: Thn34xcv
+  host: <%= ENV['host2'] %>
+  username: <%= ENV['username2'] %>
+  password: <%= ENV['password2'] %>
