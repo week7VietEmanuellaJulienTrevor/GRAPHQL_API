@@ -53,3 +53,12 @@ production:
   database: gql_api_production
   username: gql_api
   password: <%= ENV['GQL_API_DATABASE_PASSWORD'] %>
+
+datawarehouse_connect:
+  adapter: postgresql
+  encoding: unicode
+  database: datawarehouse_development
+  pool: 5
+  host: localhost
+  username: jdupont
+  password: Thn34xcv

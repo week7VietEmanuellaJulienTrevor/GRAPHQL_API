@@ -8,8 +8,13 @@ Rails.application.load_tasks
 desc 'minitest'
 task :minitest => :environment do
 
-    #number = ExternalDB1.connection.execute("select * from customers")
+    puts "first db connection"
     number = Customer.count
     puts number
+
+    puts "second db connection"
+    conn = PG::Connection.open(dbname: "datawarehouse_development")
+    fact_interventions = conn.exec('SELECT * FROM factinterventions')
+    puts fact_interventions.count
 
 end
