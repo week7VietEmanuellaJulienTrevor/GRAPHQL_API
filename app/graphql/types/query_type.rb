@@ -47,10 +47,11 @@ module Types
       argument :id, ID, required: true
     end
     
-    #conn = PG::Connection.open(dbname: "datawarehouse_development")
+    # conn = PG::Connection.open(dbname: "datawarehouse_development")
     # FactIntervention = conn.exec('SELECT * FROM factinterventions')
     def query4 (id:)
-      
+      Factintervention.find(id)
     end
+    # conn.finish()
   end
 end
