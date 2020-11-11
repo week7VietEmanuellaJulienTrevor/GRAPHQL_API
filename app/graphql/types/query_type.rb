@@ -9,5 +9,10 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :query1, Querry1Type, null:false
+    def query1
+      "This test work"
+    end
   end
 end
