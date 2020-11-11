@@ -64,3 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'figaro'
 
 gem 'pg'
+
+gem 'graphql'
+gem 'graphiql-rails', group: :development
