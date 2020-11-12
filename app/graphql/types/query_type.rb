@@ -53,5 +53,15 @@ module Types
       Factintervention.find(id)
     end
     # conn.finish()
+
+    field :newquery1, Newquery1Type , null: false do
+      description "fact intervention"
+      argument :id, ID, required: true
+    end
+    
+    def newquery1 (id:)
+      #Factintervention.find(id)
+      Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
+    end
   end
 end
