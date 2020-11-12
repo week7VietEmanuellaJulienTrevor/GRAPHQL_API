@@ -11,6 +11,7 @@ task :minitest => :environment do
     puts "first db connection"
     number = Customer.count
     puts number
+    #puts Customer.all
 
     puts "second db connection"
     #Test jd db ok!
@@ -18,7 +19,11 @@ task :minitest => :environment do
     # fact = conn.exec('SELECT * FROM fact_elevators')
 
     conn = PG::Connection.open(dbname: "datawarehouse_development")
-    fact= conn.exec('SELECT * FROM factinterventions')
+    fact = conn.exec('SELECT * FROM factinterventions')
     puts fact.count
+    
+    puts "second db connection +++"
+    puts Factintervention.count
+
 
 end

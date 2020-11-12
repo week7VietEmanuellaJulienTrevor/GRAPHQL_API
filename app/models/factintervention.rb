@@ -1,0 +1,3 @@
+class Factintervention < DatawarehouseBase
+    
+end

@@ -1,0 +1,3 @@
+class Factelevator < DatawarehouseBase
+    
+end
