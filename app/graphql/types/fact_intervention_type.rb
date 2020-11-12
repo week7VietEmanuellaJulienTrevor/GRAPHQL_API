@@ -1,6 +1,6 @@
 module Types
-    class Newquery1Type < Types::BaseObject
-      field :id, ID, null: false
+  class FactInterventionType < Types::BaseObject
+     field :id, ID, null: false
       field :employee_ID, ID, null: false
       field :building_id, ID, null: false
       field :battery_id, Int, null: true
@@ -12,5 +12,19 @@ module Types
       field :result, String, null: false
       field :report, String, null: true
       field :status, String, null: false
-    end
+      # employee
+      field :employee, Types::EmployeeType, null: true
+
+      field :building, Types::BuildingType, null: true
+
+      
   end
+end
+
+def Building
+  Building.where(id: object.building_id)[0]
+end
+  
+def Employee 
+  Employee.where(id: object.employee_id)[0]
+end

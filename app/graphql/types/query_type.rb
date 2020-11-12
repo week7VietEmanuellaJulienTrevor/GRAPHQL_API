@@ -63,6 +63,42 @@ module Types
       #Factintervention.find(id)
       Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
     end
+
+    
+   
+
+     field :Factintervention, [FactInterventionType], null: false do
+      argument :id, ID, required: true
+
+    end
+    def Factintervention (id:)
+      Factintervention.find(id)
+    end
+    
+    #  employees
+    field :employees, [Types::EmployeeType], null: true
+    
+    def employees
+      Employee.all
+    end
+    field :employee, Types::EmployeeType, null: false do
+      argument :id, ID, required: true
+    end
+
+    def employee(id:)
+      Employee.find(id)
+    end
+
+
+   
+     field :Building, [BuildingType], null: false do
+      argument :id, ID, required: true
+    end
+
+    def Building(id:)
+      Building.all
+      Building.find(id)
+    end
   end
 end
  

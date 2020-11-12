@@ -4,5 +4,6 @@ development:
   database: datawarehouse_development
   pool: 5
   host: localhost
-  username: jdupont
-  password: password
+  username: emma
+  password: Lovely13
+  
