@@ -55,7 +55,7 @@ module Types
     # conn.finish()
 
     field :newquery1, Newquery1Type , null: false do
-      description "fact intervention"
+      description "first querry done"
       argument :id, ID, required: true
     end
     
@@ -77,12 +77,40 @@ module Types
     end
 
     field :newquery2, Newquery2Type , null: false do
-      description "building"
+      description "second query"
       argument :id, ID, required: true
     end
     
     def newquery2 (id:)
-      Building.find(id)
+      b_table_entry = Building.find(id)
+      b_customer_id = b_table_entry[:customer_id]
+      
+      # puts b_customer_id
+      c_table_entry = Customer.find(b_customer_id)
+      c_table_entry2 = c_table_entry.attributes
+      c_table_entry2.delete("id")
+
+      c_table_entry2["id"] = id
+      c_table_entry2["customer_id"] = b_customer_id
+      puts "----------------------------"
+      #puts c_table_entry2
+
+      fc_concerned_interventions = Factintervention.where(building_id: id)
+      puts "----------------------------"
+      puts fc_concerned_interventions.all
+
+      fc_concerned_interventions_count = fc_concerned_interventions.count
+      puts "----------------------------"
+      fc_concerned_interventions_id = fc_concerned_interventions.first[:id]
+      puts fc_concerned_interventions_id
+      element1 = fc_concerned_interventions.find(fc_concerned_interventions_id)
+      element1_hash = element1.attributes
+      puts element1_hash
+      #fc_concerned_interventions.find(fc_concerned_interventions_id).destroy
+      puts fc_concerned_interventions.count
+      
+
+      c_table_entry2
     end
   end
 end
