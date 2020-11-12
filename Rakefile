@@ -22,8 +22,8 @@ task :minitest => :environment do
     #fact = conn.exec('SELECT * FROM factinterventions')
     # puts fact.count
     
-    # puts "second db connection +++"
-    # puts Factintervention.count
+    puts "second db connection +++"
+    puts Factintervention.count
 
 
 end
