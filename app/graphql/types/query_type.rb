@@ -1,3 +1,5 @@
+require 'pg'
+
 module Types
   class QueryType < Types::BaseObject
     # Add root-level fields here.
@@ -47,10 +49,10 @@ module Types
       argument :id, ID, required: true
     end
     
-    #conn = PG::Connection.open(dbname: "datawarehouse_development")
-    # FactIntervention = conn.exec('SELECT * FROM factinterventions')
+    conn = PG::Connection.open(dbname: "datawarehouse_development")
+    FactIntervention = conn.exec('SELECT * FROM factinterventions')
     def query4 (id:)
-      
+      FactIntervention.find(id)
     end
   end
 end
