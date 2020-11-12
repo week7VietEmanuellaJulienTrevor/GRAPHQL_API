@@ -1,4 +1,5 @@
 require 'pg'
+require "st-elsewhere"
 
 module Types
   class QueryType < Types::BaseObject
@@ -61,9 +62,18 @@ module Types
       argument :id, ID, required: true
     end
     
+    # def newquery1 (id:)
+    #   #Factintervention.find(id)
+    #   Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
+    # end
+
     def newquery1 (id:)
       #Factintervention.find(id)
-      Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
+      Building
+      .select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention')
+      .joins(:factinterventions).find(id)
     end
+
+
   end
 end

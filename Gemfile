@@ -67,3 +67,4 @@ gem 'pg'
 
 gem 'graphql'
 gem 'graphiql-rails', group: :development
+gem 'st-elsewhere'
