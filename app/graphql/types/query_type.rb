@@ -60,8 +60,29 @@ module Types
     end
     
     def newquery1 (id:)
-      #Factintervention.find(id)
-      Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
+      fc_table = Factintervention.find(id)
+      fc_building_id = fc_table[:building_id]
+      #b_table = Building.find(fc_building_id)
+      b_address = Building.find(fc_building_id)[:address_of_the_building]
+      puts b_address
+      
+      
+      fc_table2 = fc_table.attributes
+      fc_table2["address_of_the_building"] = b_address
+      puts fc_table2
+
+      
+      #Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
+      fc_table2
+    end
+
+    field :newquery2, Newquery2Type , null: false do
+      description "building"
+      argument :id, ID, required: true
+    end
+    
+    def newquery2 (id:)
+      Building.find(id)
     end
   end
 end
