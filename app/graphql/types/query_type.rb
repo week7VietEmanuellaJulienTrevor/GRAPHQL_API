@@ -67,7 +67,7 @@ module Types
     
    
 
-     field :Factintervention, [FactInterventionType], null: false do
+     field :Factintervention, FactInterventionType, null: false do
       argument :id, ID, required: true
 
     end
@@ -76,29 +76,41 @@ module Types
     end
     
     #  employees
-    field :employees, [Types::EmployeeType], null: true
+    field :Employees, [Types::EmployeeType], null: true
     
-    def employees
+    def Employees
       Employee.all
     end
-    field :employee, Types::EmployeeType, null: false do
+    field :Employee, Types::EmployeeType, null: false do
       argument :id, ID, required: true
     end
 
-    def employee(id:)
+    def Employee(id:)
       Employee.find(id)
     end
 
 
-   
-     field :Building, [BuildingType], null: false do
+      field :buildings, [Types::BuildingType], null: true
+    
+    def building
+      Building.all
+    end
+    field :building, Types::BuildingType, null: false do
       argument :id, ID, required: true
     end
 
-    def Building(id:)
-      Building.all
+    def building(id:)
       Building.find(id)
     end
+
+   
+    #  field :building, BuildingType, null: false do
+    #   argument :id, ID, required: true
+    # end
+    # def building(id:)
+    #   building.select('buildings.id, buildings.address_of_the_building').find(id)
+    
+    # end
   end
 end
  

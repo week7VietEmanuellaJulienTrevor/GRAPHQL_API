@@ -21,7 +21,7 @@ module Types
   end
 end
 
-def Building
+def building
   Building.where(id: object.building_id)[0]
 end
   
