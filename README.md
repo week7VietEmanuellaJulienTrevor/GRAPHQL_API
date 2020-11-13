@@ -9,9 +9,10 @@ TREVOR KITCHEN “Member”
 EMMANUELLA DERILUS “Member”
 ANDRE DE SANTANA “Member”
 JULIEN DUPONT “Member”
-GEMS
-*graphql
-*graphiql
+
+  GEMS
+  *graphql
+  *graphiql
 
 This week we were asked to create an API allowing GraphQL queries. This was done with the use of our databases from the past weeks.
 
@@ -20,7 +21,7 @@ To use GraphIQL you need to add the query on the left panel then press the play 
 You can retrieve the address of the building, the beginning and the end of the intervention for a specific intervention. The ids can be changed as needed.
 {
 newquery1 (id:201){
-interventions{
+ interventions{
 startDateIntervention
 endDateIntervention
 address {
