@@ -17,7 +17,7 @@
 
 > To use GraphIQL you need to add the query on the left panel then press the play button on the top left.
 
-You can retrieve the address of the building, the beginning and the end of the intervention for a specific intervention. The ids can be changed as needed.
+> You can retrieve the address of the building, the beginning and the end of the intervention for a specific intervention. The Id's can be changed as needed.
 ```
 {
     newquery1(id: 201) {
@@ -36,7 +36,7 @@ You can retrieve the address of the building, the beginning and the end of the i
 }
 
 ```
-You can retrieve customer information and the list of interventions that look place for a specific building.
+> You can retrieve customer information and the list of interventions that look place for a specific building.
 ```
 {
     newquery2(id: 6) {
@@ -66,7 +66,7 @@ You can retrieve customer information and the list of interventions that look pl
 }
 ```
 
-You can retrieve all interventions carried out by a specified employee with the buildings associated with these interventions including the details (Table BuildingDetails) associated with these buildings.
+> You can retrieve all interventions carried out by a specified employee with the buildings associated with these interventions including the details (Table BuildingDetails) associated with these buildings.
 ```
 {
     newquery3(id: 10) {
