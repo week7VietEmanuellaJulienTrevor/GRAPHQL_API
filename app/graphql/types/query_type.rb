@@ -180,6 +180,7 @@ module Types
 
           # add details to the building
           buildingHash["building_detail"] = detail
+          buildingHash["description"] = "Building"
 
           p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
           pp buildingHash
@@ -196,6 +197,7 @@ module Types
 
         end
         intervention["building"] = listOfBuildings
+        intervention["description"] = "intervention"
 
         # add interventionto list of interventions
         listOfInterventions.push(intervention)

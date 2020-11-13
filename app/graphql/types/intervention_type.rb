@@ -1,5 +1,6 @@
 module Types
     class InterventionType < Types::BaseObject
+        field :description, String, null: true
         field :id, ID, null: false
         field :start_date_intervention, String, null: false
         field :employee_id, ID, null: false
