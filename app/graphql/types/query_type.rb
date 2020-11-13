@@ -1,68 +1,6 @@
 module Types
   class QueryType < Types::BaseObject
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
-    end
-
-    # field :query1,
-    #   Query1Type, 
-    #   null: false,
-    #   description: "test"
-    # end 
-    field :query1, Query1Type, null: false do
-      description "other test"
-      argument :id, ID, required: true
-    end
-    
-    def query1 (id:)
-      Customer.find(id)
-    end
-
-    field :query2, Query2Type, null: false do
-      description "other test"
-      argument :id, ID, required: true
-    end
-    
-    def query2 (id:)
-      Building.select('buildings.id, buildings.address_of_the_building').find(id)
-    end
-
-    field :query3, Query3Type, null: false do
-      description "other test"
-      argument :id, ID, required: true
-    end
-    
-    def query3 (id:)
-      Battery.find(id)
-    end
-
-    field :query4, Query4Type, null: false do
-      description "other test"
-      argument :id, ID, required: true
-    end
-    
-    # conn = PG::Connection.open(dbname: "datawarehouse_development")
-    # FactIntervention = conn.exec('SELECT * FROM factinterventions')
-    def query4 (id:)
-
-      testvariable = 31
-
-      testvariable *= 2
-      
-      puts "________________________________"
-      p testvariable
-
-
-
-      Building.find(id)[:address_of_the_building]
-    end
-    # conn.finish()
 
     field :newquery1, Newquery1Type , null: false do
       description "first querry done"
@@ -97,7 +35,6 @@ module Types
       interventionR ["address"] = b_address
 
       result = {intervention: interventionR}
-      #Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
       fc_table2
     end
 
@@ -114,7 +51,7 @@ module Types
 
       p"__________________________________"
       puts interventions
-      p "___________________________________"
+      p "_________________________________"
       puts customer
 
       
@@ -190,9 +127,6 @@ module Types
           detail = BuildingDetail.where(building_id: building["id"]).take
           # convert building to hash
           buildingHash = building.attributes
-
-    
-
           # add details to the building
           buildingHash["building_detail"] = detail
           buildingHash["description"] = "Building"
@@ -200,115 +134,28 @@ module Types
           p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
           pp buildingHash
           p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-
           # push buikding to the array of buildings
           listOfBuildings.push(buildingHash)
 
           p"ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttytytttttgjknksafaksjfnaksskdjc"
           pp listOfBuildings
           p"ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttytytttttgjknksafaksjfnaksskdjc"
-
-
         end
         intervention["building"] = listOfBuildings
         intervention["description"] = "intervention"
 
         # add interventionto list of interventions
         listOfInterventions.push(intervention)
-
-
-        
       end
-
-
-
-      # # test to join building detail to a single building
-      # building = Building.find(10)
-      # building_detail = BuildingDetail.where(building_id: building.id).take
-      # buildinghash = building.attributes
-      # buildinghash["building_detail"] = building_detail    
-      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      # # pp buildinghash
-      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-      
-      # # creates an array of buildings having been intervened by employee
-      # buildings = Building.where(id: interventionid)
-
-      # buildinglist = []
-      # # populate the array of buildings for final result, joining them with their individual building details.
-      # buildings.each do |build|
-      #   build_detail = BuildingDetail.where(building_id: build.id).take
-      #   buildhash = build.attributes
-      #   buildhash["building_detail"] = build_detail
-      #   buildinglist.push(buildhash)
-      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      # # pp buildhash
-      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      
-      # end
-
-
-      # buildings = [buildinghash]
-
-      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      # # pp buildinglist
-      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       
       employeeHash["interventions"] = listOfInterventions
 
       result = {
-        # interventions: interventions,
-        # interventions:listOfInterventions,
-        # buildings: buildings
-        # buildings: buildinglist
+        
         employee: employeeHash
       }
 
-      # return listOfInterventions
     end
-
-
-    
-    
-      
-  
-
-    # ------------Attempt Julien query2 def content with loop start-------------
-    # b_table_entry = Building.find(id)
-    # b_customer_id = b_table_entry[:customer_id]
-    
-    # # puts b_customer_id
-    # c_table_entry = Customer.find(b_customer_id)
-    # c_table_entry2 = c_table_entry.attributes
-    # c_table_entry2.delete("id")
-
-    # c_table_entry2["id"] = id
-    # c_table_entry2["customer_id"] = b_customer_id
-    # puts "----------------------------"
-    # #puts c_table_entry2
-
-    # c_table_entry3 = c_table_entry2
-    # fc_concerned_interventions = Factintervention.where(building_id: id)
-    # puts "----------)))))------------------"
-    # counter = 1
-    # fc_concerned_interventions.each do |f|
-    #   puts f[:id]
-    #   actual_id = f[:id]
-    #   puts fc_concerned_interventions.where(id: actual_id)
-    #   actual_intervention = Factintervention.find(actual_id)
-    #   actual_intervention_hash = actual_intervention.attributes
-
-    #   c_table_entry3["intervention#{counter}"] = actual_intervention_hash
-    # end
-    # #puts Factintervention.count
-    # puts"999999999999999999999999999"
-    # puts c_table_entry3
-    # c_table_entry2
-    # ------------Attempt Julien query2 def content with loop end-------------
-
-
   end
 end
  
