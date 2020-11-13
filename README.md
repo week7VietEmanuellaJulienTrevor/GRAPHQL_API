@@ -38,31 +38,33 @@ newquery1 (id:201){
 
 ```
 You can retrieve customer information and the list of interventions that look place for a specific building.
-{
-newquery2(id: 6){
-customer{
-id
-addressId
-fullNameCompanyContact
-companyName
-companyDescription
-companyContactPhone
-companyHeadquarterAddress
-customerCreationDate
-}interventions{
-id
-batteryId
-columnId
-elevatorId
-employeeId
-status
-result
-startDateIntervention
-endDateIntervention
-report
+```
+{  
+newquery2(id: 6){  
+	customer{  
+		id  
+		addressId  
+		fullNameCompanyContact  
+		companyName  
+		companyDescription  
+		companyContactPhone  
+		companyHeadquarterAddress  
+		customerCreationDate  
+			}interventions{  
+			id  
+			batteryId  
+			columnId  
+			elevatorId  
+			employeeId  
+			status  
+			result  
+			startDateIntervention  
+			endDateIntervention  
+			report  
+		}  
+	}  
 }
-}
-}
+```
 
 You can retrieve all interventions carried out by a specified employee with the buildings associated with these interventions including the details (Table BuildingDetails) associated with these buildings.
 
