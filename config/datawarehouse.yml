@@ -1,8 +1,8 @@
-datawarehouse_connect2:
+development:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['database2'] %>
+  database: datawarehouse_development
   pool: 5
-  host: <%= ENV['host2'] %>
-  username: <%= ENV['username2'] %>
-  password: <%= ENV['password2'] %>
+  host: localhost
+  username: trevorkitchen
+  password: boby

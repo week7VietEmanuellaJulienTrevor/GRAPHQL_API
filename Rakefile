@@ -9,16 +9,26 @@ desc 'minitest'
 task :minitest => :environment do
 
     puts "first db connection"
-    number = Customer.count
+    number = Customer.find(1)[:company_name]
     puts number
+    #puts Customer.all
 
-    puts "second db connection"
+    # puts "second db connection"
     #Test jd db ok!
     # conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "jd2")
     # fact = conn.exec('SELECT * FROM fact_elevators')
 
-    conn = PG::Connection.open(dbname: "datawarehouse_development")
-    fact= conn.exec('SELECT * FROM factinterventions')
-    puts fact.count
+    #conn = PG::Connection.open(dbname: "datawarehouse_development")
+    #fact = conn.exec('SELECT * FROM factinterventions')
+    # puts fact.count
+    
+    puts "second db connection +++"
+    puts Factintervention.count
+
+    puts "other tests"
+    object1 = Factintervention.find(1)
+    puts object1.building_id
+    
+
 
 end
