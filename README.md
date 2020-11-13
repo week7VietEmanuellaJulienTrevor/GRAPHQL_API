@@ -39,30 +39,31 @@ You can retrieve the address of the building, the beginning and the end of the i
 ```
 You can retrieve customer information and the list of interventions that look place for a specific building.
 ```
-{  
-newquery2(id: 6){  
-	customer{  
-		id  
-		addressId  
-		fullNameCompanyContact  
-		companyName  
-		companyDescription  
-		companyContactPhone  
-		companyHeadquarterAddress  
-		customerCreationDate  
-			}interventions{  
-			id  
-			batteryId  
-			columnId  
-			elevatorId  
-			employeeId  
-			status  
-			result  
-			startDateIntervention  
-			endDateIntervention  
-			report  
-		}  
-	}  
+{
+    newquery2(id: 6) {
+        customer {
+            id
+            addressId
+            fullNameCompanyContact
+            companyName
+            companyDescription
+            companyContactPhone
+            companyHeadquarterAddress
+            customerCreationDate
+        }
+        interventions {
+            id
+            batteryId
+            columnId
+            elevatorId
+            employeeId
+            status
+            result
+            startDateIntervention
+            endDateIntervention
+            report
+        }
+    }
 }
 ```
 
