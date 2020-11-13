@@ -8,6 +8,14 @@ development:
   password: Codeboxx1!
 
 
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: vnpostgres
+  pool: 5
+  host: codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com
+  username: codeboxx
+  password: Codeboxx1!
 # development:
 #   adapter: postgresql
 #   encoding: unicode
