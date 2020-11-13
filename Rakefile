@@ -25,5 +25,10 @@ task :minitest => :environment do
     puts "second db connection +++"
     puts Factintervention.count
 
+    puts "other tests"
+    object1 = Factintervention.find(1)
+    puts object1.building_id
+    
+
 
 end
