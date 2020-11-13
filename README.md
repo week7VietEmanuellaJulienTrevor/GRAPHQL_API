@@ -20,21 +20,22 @@ To use GraphIQL you need to add the query on the left panel then press the play 
 
 You can retrieve the address of the building, the beginning and the end of the intervention for a specific intervention. The ids can be changed as needed.
 ```
-{
-newquery1 (id:201){
- interventions{
-startDateIntervention
-endDateIntervention
-address {
-numberAndStreet
-suiteOrApartment
-city
-country
-postalCode
+{  
+newquery1 (id:201){  
+		interventions{  
+			startDateIntervention  
+			endDateIntervention  
+			address {  
+				numberAndStreet  
+				suiteOrApartment  
+				city  
+				country  
+				postalCode  
+			}  
+		}  
+	}  
 }
-}
-}
-}
+
 ```
 You can retrieve customer information and the list of interventions that look place for a specific building.
 {
