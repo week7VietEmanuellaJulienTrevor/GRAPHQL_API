@@ -15,7 +15,9 @@
 
 #### This week we were asked to create a Rest Api allowing GraphQL queries for Rocket Elevators.This was done with the use of our databases from the past weeks.
 
-> To use GraphIQL you need to add the query on the left panel then press the play button on the top left.
+### Using GraphIQL on your localhost: http://localhost:3001/graphiql
+
+1. Add the query on the left panel then press the play button on the top left.
 
 - Retrieving the address of the building, the beginning and the end of the intervention for a specific intervention. The Id's can be changed as needed.
 ```
