@@ -65,7 +65,7 @@ module Types
     # conn.finish()
 
     field :newquery1, Newquery1Type , null: false do
-      description "fact intervention"
+      description "first querry done"
       argument :id, ID, required: true
     end
     
@@ -87,7 +87,7 @@ module Types
     end
 
     field :newquery2, Newquery2Type , null: false do
-      description "building"
+      description "second query"
       argument :id, ID, required: true
     end
     
@@ -126,6 +126,42 @@ module Types
 
     
     
+      
+    end
+
+    # ------------Attempt Julien query2 def content with loop start-------------
+    # b_table_entry = Building.find(id)
+    # b_customer_id = b_table_entry[:customer_id]
+    
+    # # puts b_customer_id
+    # c_table_entry = Customer.find(b_customer_id)
+    # c_table_entry2 = c_table_entry.attributes
+    # c_table_entry2.delete("id")
+
+    # c_table_entry2["id"] = id
+    # c_table_entry2["customer_id"] = b_customer_id
+    # puts "----------------------------"
+    # #puts c_table_entry2
+
+    # c_table_entry3 = c_table_entry2
+    # fc_concerned_interventions = Factintervention.where(building_id: id)
+    # puts "----------)))))------------------"
+    # counter = 1
+    # fc_concerned_interventions.each do |f|
+    #   puts f[:id]
+    #   actual_id = f[:id]
+    #   puts fc_concerned_interventions.where(id: actual_id)
+    #   actual_intervention = Factintervention.find(actual_id)
+    #   actual_intervention_hash = actual_intervention.attributes
+
+    #   c_table_entry3["intervention#{counter}"] = actual_intervention_hash
+    # end
+    # #puts Factintervention.count
+    # puts"999999999999999999999999999"
+    # puts c_table_entry3
+    # c_table_entry2
+    # ------------Attempt Julien query2 def content with loop end-------------
+
 
   end
 end
