@@ -117,17 +117,36 @@ module Types
       return result
     end
 
-
-
-    field :trevorquery, TrevorqueryType , null: false do
-      description "building address"
-      argument :id, ID, required: true
+    field :newquery3, Newquery3Type, null:false do
+      description "query 3"
+      argument :id, ID, required: true 
     end
+    def newquery3 (id:)
+
+      interventions = Factintervention.where(employee_id: id)
+      interventionid = interventions.select(:building_id).distinct
+      
+      # buildings = Building.where(id: interventions.select(:building_id).distinct)
+      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      pp interventionid
+      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+
+      # building_details = BuildingDetail.where(id: buildings.select(:building_details_id).distinct)
+
+      result = {
+        interventions: interventions,
+        # buildings: buildings
+      }
+
+    end
+
+    
 
     
     
       
-    end
+  
 
     # ------------Attempt Julien query2 def content with loop start-------------
     # b_table_entry = Building.find(id)

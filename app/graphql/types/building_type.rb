@@ -1,6 +1,6 @@
 module Types
     class BuildingType < Types::BaseObject
-        field :id, ID,
+        field :id, ID, null: false
         field :address_of_the_building, String, null: false
         field :full_name_of_the_building_administrator, String, null: false
         field :email_of_the_administrator_of_the_building, String, null: false
