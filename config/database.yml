@@ -53,12 +53,3 @@ production:
   database: <%= ENV['database1'] %>
   username: <%= ENV['username1'] %>
   password: <%= ENV['password1'] %>
-
-datawarehouse_connect:
-  adapter: postgresql
-  encoding: unicode
-  database: <%= ENV['database2'] %>
-  pool: 5
-  host: <%= ENV['host2'] %>
-  username: <%= ENV['username2'] %>
-  password: <%= ENV['password2'] %>
