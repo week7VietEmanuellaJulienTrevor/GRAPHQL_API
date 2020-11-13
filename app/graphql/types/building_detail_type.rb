@@ -1,5 +1,5 @@
 module Types
-    class BuildingDetailsType < Types::BaseObject
+    class Building_detailType < Types::BaseObject
         field :id, ID, null: false
         field :information_key, String, null: false
         field :value, String, null: false

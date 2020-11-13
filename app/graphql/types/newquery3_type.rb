@@ -4,5 +4,6 @@ module Types
         field :employee, EmployeeType, null:false
         field :buildings, [BuildingType], null:false
         
+        
     end
 end
