@@ -92,23 +92,6 @@ module Types
       puts fc_building_id
       puts"--------------"
       #b_table = Building.find(fc_building_id)
-<<<<<<< HEAD
-      b_address = Building.find(fc_building_id)[:address_of_the_building]
-      puts"--------------"
-      puts b_address
-      puts"--------------"
-      
-      
-      fc_table2 = fc_table.attributes
-      puts"--------------"
-      puts fc_table2
-      puts"--------------"
-      fc_table2["address_of_the_building"] = b_address
-      puts"--------------"
-      puts fc_table2
-      puts"--------------"
-      
-=======
 
       fc_table2 = fc_table.attributes
 
@@ -126,7 +109,6 @@ module Types
       }
 
       result
->>>>>>> 652de927949d08d827446b07893020c6bd4d0e47
       #Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
     end
 
@@ -189,11 +171,7 @@ module Types
       puts customer
 
       result = {
-<<<<<<< HEAD
-        id: ID,
-=======
         id: id,
->>>>>>> 652de927949d08d827446b07893020c6bd4d0e47
         customer: customer,
         interventions: interventions
       }
@@ -214,7 +192,6 @@ module Types
     #   # get the customers from the building id 
     #   customer = Customer.find(Building.find(id)[:customer_id])
 
-<<<<<<< HEAD
     #   p"__________________________________"
     #   puts interventions
     #   p "___________________________________"
@@ -232,7 +209,6 @@ module Types
     #   p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       
       
-=======
       employee = Employee.find(id)
       employeeHash = employee.attributes
 
@@ -242,7 +218,6 @@ module Types
       
 
       interventionid = []
->>>>>>> 652de927949d08d827446b07893020c6bd4d0e47
 
     #   # Building.find(id)
 
@@ -255,7 +230,6 @@ module Types
     # end
     # def newquery3 (id:)
 
-<<<<<<< HEAD
 
     #   # gets the employee's interventions
     #   interventions = Factintervention.where(employee_id: id)
@@ -291,7 +265,6 @@ module Types
     #   # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     #   # pp buildhash
     #   # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-=======
       listOfInterventions = []
 
       interventions.each do |interventionM|
@@ -380,26 +353,21 @@ module Types
       # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       # pp buildhash
       # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
->>>>>>> 652de927949d08d827446b07893020c6bd4d0e47
       
     #   end
 
 
     #   buildings = [buildinghash]
 
-<<<<<<< HEAD
     #   p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     #   pp buildinglist
     #   p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-=======
       # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       # pp buildinglist
       # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
->>>>>>> 652de927949d08d827446b07893020c6bd4d0e47
       
       employeeHash["interventions"] = listOfInterventions
 
-<<<<<<< HEAD
     #   result = {
     #     interventions: interventions,
     #     buildings: buildings
@@ -407,7 +375,6 @@ module Types
     #   }
 
     # end
-=======
       result = {
         # interventions: interventions,
         # interventions:listOfInterventions,
@@ -418,7 +385,6 @@ module Types
 
       # return listOfInterventions
     end
->>>>>>> 652de927949d08d827446b07893020c6bd4d0e47
 
 
     
