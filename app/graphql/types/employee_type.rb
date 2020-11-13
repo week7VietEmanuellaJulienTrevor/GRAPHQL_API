@@ -9,5 +9,6 @@ module Types
         field :updated_at, String, null: false
         field :admin_user_id, ID, null: false
         field :phone_number, ID, null: false
+        field :interventions, [InterventionType], null: true
     end
 end
