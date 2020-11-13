@@ -1,4 +1,4 @@
-class Building_detail < ActiveRecord::Base
+class BuildingDetail < ActiveRecord::Base
     belongs_to :buildings
     
 end
