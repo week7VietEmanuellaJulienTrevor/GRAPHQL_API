@@ -70,10 +70,23 @@ module Types
     end
     
     def newquery1 (id:)
+      # get the intervention from ID
       fc_table = Factintervention.find(id)
+      # convert intervention to hash
+      interventionR = fc_table.attributes
+
+      # get the building ID from intervention
       fc_building_id = fc_table[:building_id]
-      #b_table = Building.find(fc_building_id)
+      #b_table = Building.find(fc_building_id) UNUSED
+
+      # find the address from the buildingID
       b_address = Building.find(fc_building_id)[:address_of_the_building]
+
+      # find the Address details
+      addressID = Building.find(fc_building_id)[:address_id]
+      addressInfo= Address.find(addressID).attributes
+
+
       puts b_address
       
       
@@ -81,7 +94,9 @@ module Types
       fc_table2["address_of_the_building"] = b_address
       puts fc_table2
 
-      
+      interventionR ["address"] = b_address
+
+      result = {intervention: interventionR}
       #Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
       fc_table2
     end
@@ -208,38 +223,38 @@ module Types
 
 
 
-      # test to join building detail to a single building
-      building = Building.find(10)
-      building_detail = BuildingDetail.where(building_id: building.id).take
-      buildinghash = building.attributes
-      buildinghash["building_detail"] = building_detail    
-      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      # pp buildinghash
-      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # # test to join building detail to a single building
+      # building = Building.find(10)
+      # building_detail = BuildingDetail.where(building_id: building.id).take
+      # buildinghash = building.attributes
+      # buildinghash["building_detail"] = building_detail    
+      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # # pp buildinghash
+      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
       
-      # creates an array of buildings having been intervened by employee
-      buildings = Building.where(id: interventionid)
+      # # creates an array of buildings having been intervened by employee
+      # buildings = Building.where(id: interventionid)
 
-      buildinglist = []
-      # populate the array of buildings for final result, joining them with their individual building details.
-      buildings.each do |build|
-        build_detail = BuildingDetail.where(building_id: build.id).take
-        buildhash = build.attributes
-        buildhash["building_detail"] = build_detail
-        buildinglist.push(buildhash)
-      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      # pp buildhash
-      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # buildinglist = []
+      # # populate the array of buildings for final result, joining them with their individual building details.
+      # buildings.each do |build|
+      #   build_detail = BuildingDetail.where(building_id: build.id).take
+      #   buildhash = build.attributes
+      #   buildhash["building_detail"] = build_detail
+      #   buildinglist.push(buildhash)
+      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # # pp buildhash
+      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       
-      end
+      # end
 
 
-      buildings = [buildinghash]
+      # buildings = [buildinghash]
 
-      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      # pp buildinglist
-      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # # pp buildinglist
+      # # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       
       employeeHash["interventions"] = listOfInterventions
 

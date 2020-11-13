@@ -28,3 +28,7 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignor YML for the databases
+/config/database.yml
+/config/datawarehouse.yml
