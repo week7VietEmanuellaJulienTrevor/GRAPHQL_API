@@ -67,37 +67,38 @@ newquery2(id: 6){
 ```
 
 You can retrieve all interventions carried out by a specified employee with the buildings associated with these interventions including the details (Table BuildingDetails) associated with these buildings.
-
-{
-newquery3 (id: 10) {
-employee{
-id
-firstName
-lastName
-interventions{
-description
-id
-endDateIntervention
-startDateIntervention
-status
-result
-report
-building{
-description
-id
-addressOfTheBuilding
-fullNameOfTheBuildingAdministrator
-fullNameOfTheTechnicalContactForTheBuilding
-emailOfTheAdministratorOfTheBuilding
-technicalContactEmailForTheBuilding
-phoneNumberOfTheBuildingAdministrator
-technicalContactPhoneForTheBuilding
-buildingDetail{
-informationKey
-value
+```
+{  
+newquery3 (id: 10)  {  
+	employee{  
+		id  
+		firstName  
+		lastName  
+		interventions{  
+			description  
+			id  
+			endDateIntervention  
+			startDateIntervention  
+			status  
+			result  
+			report  
+			building{  
+				description  
+				id  
+				addressOfTheBuilding  
+				fullNameOfTheBuildingAdministrator  
+				fullNameOfTheTechnicalContactForTheBuilding  
+				emailOfTheAdministratorOfTheBuilding  
+				technicalContactEmailForTheBuilding  
+				phoneNumberOfTheBuildingAdministrator  
+				technicalContactPhoneForTheBuilding  
+				buildingDetail{  
+				informationKey  
+				value  
+					}  
+				}  
+			}  
+		}  
+	}  
 }
-}
-}
-}
-}
-}
+```
