@@ -12,6 +12,7 @@ module Types
         field :updated_at, String, null: false
         field :customer_id, String, null: false
         field :address_id, String, null: false
-        field :building_detail, Building_detailType, null: false 
+        field :building_detail, BuildingDetailType, null: false 
+        field :description, String, null: true
     end
 end

@@ -1,5 +1,6 @@
 module Types
     class InterventionType < Types::BaseObject
+        field :description, String, null: true
         field :id, ID, null: false
         field :start_date_intervention, String, null: false
         field :employee_id, ID, null: false
@@ -12,5 +13,7 @@ module Types
         field :report, String, null: true
         field :status, String, null: false
         field :address, AddressType, null: true
+        field :building, [BuildingType], null: true
+
     end
 end
