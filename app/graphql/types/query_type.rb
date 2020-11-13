@@ -92,8 +92,9 @@ module Types
     end
     
     def newquery2 (id:)
-
+      # get the interventions using a building id
       interventions = Factintervention.where(building_id: id)
+      # get the customers from the building id 
       customer = Customer.find(Building.find(id)[:customer_id])
 
       p"__________________________________"
@@ -101,6 +102,8 @@ module Types
       p "___________________________________"
       puts customer
 
+      
+      # join the 2 collections for the final result
       result = {
         customer: customer,
         interventions: interventions
@@ -123,25 +126,60 @@ module Types
     end
     def newquery3 (id:)
 
+
+      # gets the employee's interventions
       interventions = Factintervention.where(employee_id: id)
-      interventionid = interventions.select(:building_id).distinct
+      interventionid = []
+
+      # creates an array of intervention ids
+      interventions.each do |intervention|
+        interventionid.push(intervention[:building_id])
+      end
+      # eliminate duplicates
+      interventionid = interventionid.uniq
+
+      # test to join building detail to a single building
+      building = Building.find(10)
+      building_detail = Building_detail.where(building_id: building.id).take
+      buildinghash = building.attributes
+      buildinghash["building_detail"] = building_detail    
+      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      pp buildinghash
+      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
       
-      # buildings = Building.where(id: interventions.select(:building_id).distinct)
-      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      pp interventionid
-      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # creates an array of buildings having been intervened by employee
+      buildings = Building.where(id: interventionid)
+
+      buildinglist = []
+      # populate the array of buildings for final result, joining them with their individual building details.
+      buildings.each do |build|
+        build_detail = Building_detail.where(building_id: build.id).take
+        buildhash = build.attributes
+        buildhash["building_detail"] = build_detail
+        buildinglist.push(build)
+      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # pp buildhash
+      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      
+      end
 
 
-      # building_details = BuildingDetail.where(id: buildings.select(:building_details_id).distinct)
+      buildings = [buildinghash]
+
+      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      pp buildinglist
+      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      
 
       result = {
         interventions: interventions,
-        # buildings: buildings
+        buildings: buildings
+        # buildings: buildinglist
       }
 
     end
 
-    
 
     
     
