@@ -175,7 +175,7 @@ module Types
       result = {
         interventions: interventions,
         buildings: buildings
-        # buildings: buildinglist
+        #buildings: buildinglist
       }
 
     end
