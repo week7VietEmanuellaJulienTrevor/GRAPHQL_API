@@ -157,7 +157,7 @@ module Types
         build_detail = BuildingDetail.where(building_id: build.id).take
         buildhash = build.attributes
         buildhash["building_detail"] = build_detail
-        buildinglist.push(build)
+        buildinglist.push(buildhash)
       # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       # pp buildhash
       # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
