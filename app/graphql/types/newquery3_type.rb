@@ -7,4 +7,11 @@ module Types
     #   field :id, ID, null: false
     #   field :status, String, null: true
     end
-  end
+#   end
+#         field :interventions, [InterventionType], null:false
+#         field :employee, EmployeeType, null:false
+#         field :buildings, [BuildingType], null:false
+        
+        
+#     end
+end

@@ -16,6 +16,7 @@ default: &default
   username: <%= ENV['username1'] %>
   # password: <%= ENV['password1'] %>
   host: <%= ENV['host1'] %>
+  # host: <%= ENV['host1'] %>
   # socket: /var/run/mysqld/mysqld.sock
 
 development:
