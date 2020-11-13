@@ -10,8 +10,8 @@
 - JULIEN DUPONT "Member"
 
   GEMS
-  *graphql
-  *graphiql
+  * graphql
+  * graphiql
 
 This week we were asked to create an API allowing GraphQL queries. This was done with the use of our databases from the past weeks.
 
