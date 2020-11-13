@@ -1,14 +1,13 @@
 ## Rocket Elevators Graphql
 
-FALL-2020-TEAM-API-2 - Week 8 Odyssey
+### FALL-2020-TEAM-API-2 - Week 8 Odyssey 
 
-TEAM MEMBERS:
-
-VIET-NGA DAO “Team Leader”
-TREVOR KITCHEN “Member”
-EMMANUELLA DERILUS “Member”
-ANDRE DE SANTANA “Member”
-JULIEN DUPONT “Member”
+#### TEAM MEMBERS:
+- VIET-NGA DAO "Team Leader"
+- TREVOR KITCHEN "Member"
+- EMMANUELLA DERILUS "Member"
+- ANDRE DE SANTANA "Member"
+- JULIEN DUPONT "Member"
 
   GEMS
   *graphql
