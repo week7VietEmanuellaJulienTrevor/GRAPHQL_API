@@ -126,9 +126,14 @@ module Types
     end
     def newquery3 (id:)
 
+      employee = Employee.find(id)
+      employeeHash = employee.attributes
 
-      # gets the employee's interventions
+
+      # gets the employee's interventions as an array
       interventions = Factintervention.where(employee_id: id)
+      
+
       interventionid = []
 
       # creates an array of intervention ids
@@ -138,14 +143,77 @@ module Types
       # eliminate duplicates
       interventionid = interventionid.uniq
 
+      listOfInterventions = []
+
+      interventions.each do |interventionM|
+
+        inter = interventionM
+        # convert intervention to hash
+        intervention = inter.attributes
+
+        p "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+        pp intervention["building_id"]
+        p "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+  
+        
+        # create an empty array of buildings
+        listOfBuildings = []
+
+        # get an array of buidlings
+        interventionBuildings = Building.where(id: intervention["building_id"])
+        
+
+        # add building details to each building
+        interventionBuildings.each do |building|
+
+          p "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii___________________"
+          pp building["id"]
+          p "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii___________________"
+  
+
+          # get the specific building's details
+          detail = BuildingDetail.where(building_id: building["id"]).take
+          # convert building to hash
+          buildingHash = building.attributes
+
+    
+
+          # add details to the building
+          buildingHash["building_detail"] = detail
+
+          p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          pp buildingHash
+          p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+
+          # push buikding to the array of buildings
+          listOfBuildings.push(buildingHash)
+
+          p"ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttytytttttgjknksafaksjfnaksskdjc"
+          pp listOfBuildings
+          p"ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttytytttttgjknksafaksjfnaksskdjc"
+
+
+        end
+        intervention["building"] = listOfBuildings
+
+        # add interventionto list of interventions
+        listOfInterventions.push(intervention)
+
+
+        
+      end
+
+
+
       # test to join building detail to a single building
       building = Building.find(10)
       building_detail = BuildingDetail.where(building_id: building.id).take
       buildinghash = building.attributes
       buildinghash["building_detail"] = building_detail    
-      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      pp buildinghash
-      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # pp buildinghash
+      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
       
       # creates an array of buildings having been intervened by employee
@@ -167,17 +235,21 @@ module Types
 
       buildings = [buildinghash]
 
-      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      pp buildinglist
-      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # pp buildinglist
+      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       
+      employeeHash["interventions"] = listOfInterventions
 
       result = {
-        interventions: interventions,
+        # interventions: interventions,
+        # interventions:listOfInterventions,
         # buildings: buildings
-        buildings: buildinglist
+        # buildings: buildinglist
+        employee: employeeHash
       }
 
+      # return listOfInterventions
     end
 
 
