@@ -104,4 +104,7 @@
     }
 }
 ```
+### Testing with Postman 
+* Clicking on the button will send you to the postman collection (Rocket-Elevator-GraphqlAPI). Inside Postman you can click on the button "Runner" which will execute a sequence, retrieving and changing the information before restoring for further tests. (Supplied in the Codeboxx deliverable)
+
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/fccc10646f4f67a7f9fc)
