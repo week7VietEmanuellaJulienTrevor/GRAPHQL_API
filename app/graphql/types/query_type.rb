@@ -105,7 +105,7 @@ module Types
         customer: customer,
         interventions: interventions
       }
-      
+
       p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       pp result
       p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -123,16 +123,9 @@ module Types
       description "building address"
       argument :id, ID, required: true
     end
-    def trevorquery(id:)
-      # // logic goes here
-      
-      tstvar = "this is a test"
-
-
-      Building.select('buildings.id, buildings.address_of_the_building').find(id)
 
     
-    end
+    
 
   end
 end
