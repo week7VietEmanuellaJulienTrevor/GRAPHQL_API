@@ -29,7 +29,6 @@ You can retrieve the address of the building, the beginning and the end of the i
         city
         country
         postalCode
-
       }
     }
   }
@@ -59,7 +58,7 @@ You can retrieve customer information and the list of interventions that look pl
     endDateIntervention
       report
   }
-	}
+ }
 }
 ____________________________________________________________________________________________________________________________________________________________________________
 You can retrieve all interventions carried out by a specified employee with the buildings associated with these interventions including the details (Table BuildingDetails) associated with these buildings.
