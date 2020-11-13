@@ -12,6 +12,7 @@ module Types
         field :result, String, null: false
         field :report, String, null: true
         field :status, String, null: false
+        field :address, AddressType, null: true
         field :building, [BuildingType], null: true
 
     end

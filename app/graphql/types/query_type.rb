@@ -15,27 +15,25 @@ module Types
 
       # get the building ID from intervention
       fc_building_id = fc_table[:building_id]
-      #b_table = Building.find(fc_building_id) UNUSED
+      #b_table = Building.find(fc_building_id)
 
-      # find the address from the buildingID
-      b_address = Building.find(fc_building_id)[:address_of_the_building]
-
-      # find the Address details
-      addressID = Building.find(fc_building_id)[:address_id]
-      addressInfo= Address.find(addressID).attributes
-
-
-      puts b_address
-      
-      
       fc_table2 = fc_table.attributes
-      fc_table2["address_of_the_building"] = b_address
-      puts fc_table2
 
-      interventionR ["address"] = b_address
+      b_address_id = Building.find(fc_building_id)[:address_id]
+      puts b_address_id
+      a_table_entry = Address.find(b_address_id)
+      a_table_entry2 = a_table_entry.attributes
 
-      result = {intervention: interventionR}
-      fc_table2
+      fc_table2["address"] = a_table_entry2
+      #fc_table2["address_of_the_building"] = b_address
+      #puts fc_table2
+      result = {
+        id: id,
+        interventions: fc_table2
+      }
+
+      result
+      #Building.select('buildings.id, buildings.address_of_the_building, factinterventions.id, factinterventions.start_date_intervention, factinterventions.end_date_intervention').joins(:factinterventions).find(id)
     end
 
     field :newquery2, Newquery2Type , null: false do
@@ -57,6 +55,7 @@ module Types
       
       # join the 2 collections for the final result
       result = {
+        id: id,
         customer: customer,
         interventions: interventions
       }

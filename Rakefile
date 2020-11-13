@@ -26,8 +26,8 @@ task :minitest => :environment do
     puts Factintervention.count
 
     puts "other tests"
-    object1 = Factintervention.find(1)
-    puts object1.building_id
+    puts Building_detail.count
+
     
 
 
