@@ -50,9 +50,9 @@ test:
 #
 production:
   <<: *default
-  database: gql_api_production
-  username: gql_api
-  password: <%= ENV['GQL_API_DATABASE_PASSWORD'] %>
+  database: <%= ENV['database1'] %>
+  username: <%= ENV['username1'] %>
+  password: <%= ENV['password1'] %>
 
 datawarehouse_connect:
   adapter: postgresql
