@@ -6,3 +6,12 @@ development:
   host: codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com
   username: codeboxx
   password: Codeboxx1!
+
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: datawarehouse_development
+#   pool: 5
+#   host: localhost
+#   username: jdupont
+#   password: password
