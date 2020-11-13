@@ -140,7 +140,7 @@ module Types
 
       # test to join building detail to a single building
       building = Building.find(10)
-      building_detail = Building_detail.where(building_id: building.id).take
+      building_detail = BuildingDetail.where(building_id: building.id).take
       buildinghash = building.attributes
       buildinghash["building_detail"] = building_detail    
       p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -154,7 +154,7 @@ module Types
       buildinglist = []
       # populate the array of buildings for final result, joining them with their individual building details.
       buildings.each do |build|
-        build_detail = Building_detail.where(building_id: build.id).take
+        build_detail = BuildingDetail.where(building_id: build.id).take
         buildhash = build.attributes
         buildhash["building_detail"] = build_detail
         buildinglist.push(build)
@@ -174,8 +174,8 @@ module Types
 
       result = {
         interventions: interventions,
-        buildings: buildings
-        # buildings: buildinglist
+        # buildings: buildings
+        buildings: buildinglist
       }
 
     end
