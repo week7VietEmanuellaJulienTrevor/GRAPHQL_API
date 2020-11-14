@@ -16,5 +16,6 @@ module Types
         field :admin_user_id, ID, null: true
         field :address_id, ID, null: true
         field :employee_id, ID, null: true 
+        field :buildings, [BuildingType], null: true
     end
 end
