@@ -3,7 +3,7 @@ module Types
 
 
     field :newquery1, Newquery1Type , null: false do
-      description "first querry done"
+      description "Retrieving the address of the building, the beginning and the end of the intervention for a specific intervention."
       argument :id, ID, required: true
     end
     
@@ -37,7 +37,7 @@ module Types
     end
 
     field :newquery2, Newquery2Type , null: false do
-      description "second query"
+      description "Retrieving customer information and the list of interventions that took place for a specific building."
       argument :id, ID, required: true
     end
     
@@ -72,7 +72,7 @@ module Types
     end
 
     field :newquery3, Newquery3Type, null:false do
-      description "query 3"
+      description "Retrieval of all interventions carried out by a specified employee with the buildings associated with these interventions including the details (Table BuildingDetails) associated with these buildings."
       argument :id, ID, required: true 
     end
     def newquery3 (id:)
@@ -154,6 +154,38 @@ module Types
         employee: employeeHash
       }
 
+    end
+
+    #---------------------------EXTRA QUERIES SECTION-------------------------------------
+    field :contactdetailslist, Extraquery1Type , null: false do
+      description "list contact details (phone and email) for customers and employees"
+    end
+    
+    def contactdetailslist
+      employee_infos = Employee.all
+      customer_infos = Customer.all
+      pp employee_infos
+      result = {
+        customers: customer_infos.order('company_name ASC'),
+        employees: employee_infos.order('first_name ASC')
+      }
+      result
+    end
+
+    field :datacities, String , null: false do
+      description "data about a particular city"
+      argument :city, String, required: true
+    end
+    
+    def datacities (city:)
+      employee_infos = Employee.all
+      customer_infos = Customer.all
+      pp employee_infos
+      # result = {
+      #   customers: customer_infos.order('company_name ASC'),
+      #   employees: employee_infos.order('first_name ASC')
+      # }
+      result = "test"
     end
   end
 end
