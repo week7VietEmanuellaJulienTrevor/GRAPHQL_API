@@ -171,22 +171,41 @@ module Types
       }
       result
     end
-
-    field :datacities, String , null: false do
-      description "data about a particular city"
-      argument :city, String, required: true
+    
+    field :query5, Query5Type, null: false do
+      description "other test"
+      argument :id, ID, required: true
     end
     
-    def datacities (city:)
-      employee_infos = Employee.all
-      customer_infos = Customer.all
-      pp employee_infos
-      # result = {
-      #   customers: customer_infos.order('company_name ASC'),
-      #   employees: employee_infos.order('first_name ASC')
-      # }
-      result = "test"
+    def query5 (id:)
+      fc_table = Factintervention.find(id)
+      fc_employee_id = fc_table[:employee_id]
+      puts"-------------------------"
+      puts fc_employee_id
+      puts"-------------------------"
+      fc_table2 = fc_table.attributes
+      puts"-------------------------"
+      puts fc_table2
+      puts"-------------------------"
+      a_table_entry = Employee.find(fc_employee_id)
+      puts"-------------------------"
+      puts a_table_entry
+      puts"-------------------------"
+      a_table_entry2 = a_table_entry.attributes
+      puts"-------------------------"
+      puts a_table_entry2
+      puts"-------------------------"
+      fc_table2["employee"] = a_table_entry2
+      puts"-------------------------"
+      puts fc_table2
+      puts"-------------------------"
+      result = {
+        id: id,
+        interventions: fc_table2
+      }
+      # result = "test"
     end
+
   end
 end
  

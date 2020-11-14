@@ -14,6 +14,7 @@ module Types
         field :status, String, null: false
         field :address, AddressType, null: true
         field :building, [BuildingType], null: true
+        field :employee, EmployeeType, null: true
 
     end
 end
