@@ -13,10 +13,11 @@
 * graphql
 * graphiql
 
-#### This week we were asked to create a Rest Api allowing GraphQL queries for Rocket Elevators.This was done with the use of our databases from the past weeks.
+#### This week we were asked to create a Graphql Api allowing queries for Rocket Elevators.This was done with the use of our databases from the past weeks.
 
 ### Testing with Postman 
 * Clicking on the button will send you to the postman collection (Rocket-Elevator-GraphqlAPI). Inside Postman you can click on the button "Runner" which will execute a sequence, retrieving and changing the information before restoring for further tests. (Supplied in the Codeboxx deliverable)
+N.B. Endpoint with post: https://rocketelevatorgraphqlapi.herokuapp.com/graphql
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a194138cc39845896e5a)
 ### How to use GraphIQL (development mode):
