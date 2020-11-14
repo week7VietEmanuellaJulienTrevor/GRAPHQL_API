@@ -156,21 +156,21 @@ module Types
 
     end
 
-    # field :customerInfo, Newquery3Type, null:false do
-    #   description "customer information and their products"
-    #   argument :id, ID, required: true 
-    # end
-    # def customerInfo(id:)
-    #   customer = Customer.find(id)
-    #   customerHash = customer.attributes
-    #   batteries
+    field :customerInfo, Newquery3Type, null:false do
+      description "customer information and their products"
+      argument :id, ID, required: true 
+    end
+    def customerInfo(id:)
+      customer = Customer.find(id)
+      customerHash = customer.attributes
+      batteries
 
-    #   batterielist = []
+      batterielist = []
       
 
 
-    #   customerHash
-    # end
+      customerHash
+    end
   end
 end
  
