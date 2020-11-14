@@ -15,11 +15,15 @@
 
 #### This week we were asked to create a Rest Api allowing GraphQL queries for Rocket Elevators.This was done with the use of our databases from the past weeks.
 
-### How to use GraphIQL:
+### Testing with Postman 
+* Clicking on the button will send you to the postman collection (Rocket-Elevator-GraphqlAPI). Inside Postman you can click on the button "Runner" which will execute a sequence, retrieving and changing the information before restoring for further tests. (Supplied in the Codeboxx deliverable)
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a194138cc39845896e5a)
+### How to use GraphIQL (development mode):
 
 1. Access your file and run "Bundle Install";
-1. Go to your local host on a web browser: http://localhost:3000/graphiql;
-1. Add the query on the left panel then press the play button on the top left.
+2. Go to your local host on a web browser: http://localhost:3000/graphiql;
+3. Add the query on the left panel then press the play button on the top left.
 
 - Retrieving the address of the building, the beginning and the end of the intervention for a specific intervention. The Id's can be changed as needed.
 ```
@@ -106,7 +110,113 @@
     }
 }
 ```
-### Testing with Postman 
-* Clicking on the button will send you to the postman collection (Rocket-Elevator-GraphqlAPI). Inside Postman you can click on the button "Runner" which will execute a sequence, retrieving and changing the information before restoring for further tests. (Supplied in the Codeboxx deliverable)
+-[Extra] Retrieving employee name for a specific intervention
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/fccc10646f4f67a7f9fc)
+
+	{
+
+	query5 (id: 6){
+
+		interventions{
+
+			id
+
+			employee{
+
+				firstName
+
+				lastName
+
+				}
+
+			}
+
+		}
+
+	}
+	
+-[Extra] List all telephone numbers and emails from employees and customers (alphabetical order)
+
+	{
+
+		contactdetailslist {
+
+			employees{
+
+				firstName
+
+				lastName
+
+				phoneNumber
+
+				email
+
+			}
+
+			customers{
+
+				companyName
+
+				fullNameCompanyContact
+
+				companyContactPhone
+
+				emailCompanyContact
+
+				fullNameServiceTechnicalAuthority
+
+				technicalAuthorityPhone
+
+				technicalManagerEmail
+
+			}
+
+		}
+
+	}
+
+-[Extra] Retreiving all products id of a customer (elevators, columns, batteries) in each of his buildings
+
+	{
+
+		customerinfo (id: 2){
+
+			customer{
+
+				id
+
+				companyName
+
+				buildings{
+
+					addressOfTheBuilding
+
+					batteries{
+
+						id
+
+						status
+
+						columns{
+
+							id
+
+							elevators{
+
+								id
+
+							}
+
+						}
+
+  
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
