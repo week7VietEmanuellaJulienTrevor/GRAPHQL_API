@@ -5,5 +5,5 @@ module Types
         # field :buildings, [BuildingType], null:false
         
         
-#     end
+    end
 end
