@@ -10,5 +10,6 @@ module Types
         field :updated_at, String, null: true
         field :battery_id, ID, null: true 
         field :customer_id, ID, null: true 
+        field :elevators, [ElevatorType], null: true
     end
 end

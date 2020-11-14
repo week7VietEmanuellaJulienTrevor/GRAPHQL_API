@@ -1,5 +1,5 @@
 module Types
-    class BuildingType < Types::BaseObject
+    class ElevatorType < Types::BaseObject
         field :id, ID, null: false
         field :serial_number, String, null: true 
         field :model, String, null: true 

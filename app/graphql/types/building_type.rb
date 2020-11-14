@@ -14,5 +14,6 @@ module Types
         field :address_id, String, null: false
         field :building_detail, BuildingDetailType, null: true 
         field :description, String, null: true
+        field :batteries, [BatteryType], null: true
     end
 end

@@ -188,20 +188,77 @@ module Types
       result = "test"
     end
 
-    field :customerInfo, Newquery3Type, null:false do
+    field :customerinfo, CustomerinfoType, null:false do
       description "customer information and their products"
       argument :id, ID, required: true 
     end
-    def customerInfo(id:)
+    def customerinfo (id:)
+
       customer = Customer.find(id)
       customerHash = customer.attributes
-      batteries
+      batteries = Battery.all
+      buildings = Building.all
+      columns = Column.all
+      elevators = Elevator.all
 
-      batterielist = []
       
+      buildingList = []
+      buildings.each do |building|
+        buildingHash = building.attributes
 
+          
 
-      customerHash
+       
+        if building["customer_id"] == customer["id"] 
+          
+          
+          batterielist = []
+          batteries.each do |battery|
+            batteryHash = battery.attributes
+            
+            pp battery["building_id"]
+            pp building["id"]
+            
+            if battery["building_id"] == building["id"].to_s
+              p"______________________________"
+              pp "BATTERY FOUND"
+              p"______________________________"
+              columnList = []
+              columns.each do |column|
+                columnHash = column.attributes
+                if column["battery_id"] == battery["id"]
+                  elevatorList = []
+                  elevators.each do |elevator|
+                    if elevator["column_id"] == column["id"]
+                      elevatorList.push(elevator)
+                    end
+                  end
+                  columnHash["elevators"] = elevatorList
+                  columnList.push(columnHash)
+                end
+              end
+              batteryHash["columns"] = columnList
+              batterielist.push(batteryHash)
+            end
+          end
+          
+          buildingHash["batteries"] = batterielist
+          buildingList.push(buildingHash)
+        end
+
+      end
+
+      customerHash["buildings"] = buildingList
+
+      p "__________________________"
+      pp customerHash
+      p "__________________________"
+      pp customerHash[:id]
+      p "__________________________"
+
+      result = {
+        customer: customerHash
+      }
     
     end
   end

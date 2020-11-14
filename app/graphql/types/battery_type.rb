@@ -13,5 +13,6 @@ module Types
         field :created_at, String, null: true
         field :updated_at, String, null: true
         field :customer_id, ID, null: true 
+        field :columns, [ColumnType], null: true
     end
 end
